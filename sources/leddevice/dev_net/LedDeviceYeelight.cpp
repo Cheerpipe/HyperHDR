@@ -1148,6 +1148,9 @@ bool LedDeviceYeelight::startMusicModeServer()
 				if ((_interface.type() != QNetworkInterface::InterfaceType::Ethernet &&
 					_interface.type() != QNetworkInterface::InterfaceType::Wifi) ||
 					_interface.humanReadableName().indexOf("virtual", 0, Qt::CaseInsensitive) >= 0 ||
+					_interface.humanReadableName().indexOf("br-", 0, Qt::CaseInsensitive) >= 0 ||
+					_interface.humanReadableName().indexOf("docker", 0, Qt::CaseInsensitive) >= 0 ||
+					_interface.humanReadableName().indexOf("veth", 0, Qt::CaseInsensitive) >= 0 ||
 					!_interface.flags().testFlag(QNetworkInterface::InterfaceFlag::IsRunning) ||
 					!_interface.flags().testFlag(QNetworkInterface::InterfaceFlag::IsUp))
 					continue;
